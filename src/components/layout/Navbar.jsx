@@ -28,7 +28,7 @@ const Navbar = () => {
     
             {/* Logo */}
             <Link to='/'>
-                <img src={logo} alt="Logo" className="h-12 w-auto" />
+                <img src={logo} alt="Logo" className="w-20 h-auto" />
             </Link>
 
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className='md:hidden p-2'>

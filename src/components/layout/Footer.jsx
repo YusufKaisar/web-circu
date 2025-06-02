@@ -4,6 +4,8 @@ import { IoMdMail } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { Link, useLocation } from 'react-router-dom'
+import { FaYoutube } from "react-icons/fa";
+
 
 const Footer = () => {
         const location = useLocation();
@@ -12,56 +14,72 @@ const Footer = () => {
         const footerLinks = {
         home: [,
             { path: "/about", label: "Tentang Kami" },
-            { path: "/program", label: "Program" },
+            { path: "/program", label: "Navigation" },
             { path: "/edukasi", label: "Edukasi" },
-            { path: "/kontak", label: "Kontak" },
         ],
 
-        Features: [   
-        {path: "/app", label: "Aplikasi"},   
-        {path: "/game", label: "Game"},   
-        {path: "/waste", label: "Zero Waste"},   
-        {path: "/maggot", label: "Maggot"},   
+        Contacts: [   
+        {path: "https://maps.app.goo.gl/WeZMWoR2iWCMQwCE6", label: "Jl. Dr. T. Mansur No. 9, Kampus Padang Bulan, Medan, 20155, Sumatera Utara"},   
+        {path: "/email", label: "info@usu.ac.id"},   
+        {path: "/nomor", label: "+62 821 6888 9060"},     
         ],
     }
 
   return (
     <footer className='shadow'>
-        <div className='container mx-auto px-10 md:px-20 lg:px-40 pb-16'>
+        <div className='container mx-auto px-10 md:px-20 lg:px-12 pb-16'>
             <div>
                 {/*Brand Name*/}
-                <div className='flex gap-1 items-cente cursor-pointer justify-between'>
-                    <div>
-                        <Link to='/'>
-                            <img src={logo} alt="logo" className='h-12 w-auto mb-4'/>
-                        </Link>
-                        <p className='text-sm md:text-base mb-4'>Jl. Dr. T. Mansur No. 9, Kampus Padang Bulan, <br />Medan, 20155, Sumatera Utara</p>     
-
-                        <div>
-                            <a href="#" className='flex gap-2 mb-2'><FaPhoneAlt className='mt-1'/> 0821 6888 9060</a>
-                            <a href="#" className='flex gap-2'><IoMdMail className='mt-1'/> info@usu.ac.id</a>
+                <div className='flex items-center cursor-pointer justify-between'>
+                    <div className=''>
+                        <div className='flex items-center justify-center gap-2'>
+                            <Link to='/'>
+                                <img src={logo} alt="logo" className='w-20 h-auto'/>
+                            </Link>
+                            <h2 className='text-2xl font-bold'>USU Circularity Center</h2>
                         </div>
+
+                        <p className='text-base text-justify'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, ipsa facere fugiat ducimus adipisci id ipsum in eligendi dicta! Eius iusto provident pariatur similique ratione illum molestias, perspiciatis sed alias?</p>
                     </div>
 
-                    <div className='flex gap-8 md:gap-16 justify-end text-right pt-'>
-                        {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
-                        <div key={categoryIndex}>
-                            <ul className='space-y-2 text-gray-500'>
-                            {links.map((link, index) => (
+                    {/* Navigasi */}
+                    <div className='flex gap-10'>
+                        <div>
+                            <h3 className="font-bold mb-2 text-lg">Navigation</h3>
+                            <ul className="space-y-2 text-base text-gray-600">
+                                {footerLinks.home.map((link, index) => (
                                 <li key={index}>
-                                <Link to={link.path} className="hover:text-[var(--primary)] transition-all hover:font-bold
-                                ${activeLink === link.path ? 'text-[var(--primary)] font-bold' : ''}">
+                                    <Link
+                                    to={link.path}
+                                    className={`hover:text-[var(--primary)] transition-all ${
+                                        activeLink === link.path ? "text-[var(--primary)] font-bold" : ""
+                                    }`}
+                                    >
                                     {link.label}
-                                </Link>
+                                    </Link>
                                 </li>
-                            ))}
+                                ))}
                             </ul>
                         </div>
-                        ))}
-                    </div>
-                    
-                </div> 
-                
+
+                        {/* Kontak */}
+                        <div>
+                            <h3 className="font-bold mb-2 text-lg">Contacts</h3>
+                            <ul className="space-y-2 text-base text-gray-600">
+                                {footerLinks.Contacts.map((item, index) => (
+                                <li key={index}>
+                                    <Link
+                                    to={item.path}
+                                    className="hover:text-[var(--primary)] transition-all"
+                                    >
+                                    {item.label}
+                                    </Link>
+                                </li>
+                                ))}
+                            </ul>
+                        </div>        
+                    </div>            
+                </div>             
             </div>
         </div>
 
